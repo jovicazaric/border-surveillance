@@ -1,1 +1,4 @@
-"# Border surveillance app for Serbia and Bosnia and Herzegovina based on public services" 
+### Border surveillance app
+- For Serbia and Bosnia and Herzegovina
+- React native app
+- Based on public services

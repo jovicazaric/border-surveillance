@@ -1,7 +1,7 @@
-import React from 'react';
-import { StyleSheet, Text, ScrollView } from 'react-native';
-import AppTitleComponent from './components/app-title/app-title';
-import CountriesComponent from './components/countries/countries';
+import React from "react";
+import { StyleSheet, Text, ScrollView } from "react-native";
+import AppTitleComponent from "./components/app-title/app-title";
+import CountriesComponent from "./components/countries/countries";
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -13,12 +13,18 @@ export default class App extends React.Component {
 			return {
 				title: {
 					main: "Border crossing surveillance",
-					intro: "Serbia, Bosnia and Herzegovina"
+					intro: "Bosnia and Herzegovina"
 				},
 				countries: [
 					{
 						name: "Serbia",
-						borderCrossings: []
+						borderCrossings: [
+							{
+								name: "Sepak",
+								direction: "Exit",
+								imageUrl: "https://bihamk.ba/assets/video-surveillance/SEPAK.jpg"
+							}
+						]
 					},
 					{
 						name: "Bosnia and Herzegovina",

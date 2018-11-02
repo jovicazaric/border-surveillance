@@ -1,6 +1,6 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import CountryComponent from '../country/country';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import CountryComponent from "../country/country";
 
 export default class CountriesComponent extends React.Component {
 	render() {
@@ -9,9 +9,15 @@ export default class CountriesComponent extends React.Component {
 		});
 
 		return (
-			<View>
+			<View style={styles.countries}>
 				{countries}
 			</View>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	countries: {
+		marginTop: 20
+	}
+});

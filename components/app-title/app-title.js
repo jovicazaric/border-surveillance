@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 export default class AppTitleComponent extends React.Component {
 	render() {
@@ -17,12 +17,12 @@ export default class AppTitleComponent extends React.Component {
 
 const styles = StyleSheet.create({
 	countryTitle: {
-		textAlign: 'center',
+		textAlign: "center",
 		fontSize: 15
 	},
 	appTitle: {
 		marginTop: 5,
-		textAlign: 'center',
-		fontSize: 20
+		textAlign: "center",
+		fontSize: 35
 	}
 });

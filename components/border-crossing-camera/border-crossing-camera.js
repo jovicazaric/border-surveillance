@@ -1,6 +1,6 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
-import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
+import React from "react";
+import { StyleSheet, Text, View, Image, Button } from "react-native";
+import { Collapse, CollapseHeader, CollapseBody } from "accordion-collapse-react-native";
 
 export default class BorderCrossingCameraComponent extends React.Component {
 	constructor(props) {
@@ -26,7 +26,7 @@ export default class BorderCrossingCameraComponent extends React.Component {
 	refresh() {
 		this.setState(currentState => {
 			return {
-				imageUrl: currentState.imageUrl + "?t=" + new Date().getTime(),
+				imageUrl: this.props.data.imageUrl + "?t=" + new Date().getTime(),
 				refreshing: true
 			};
 		});
@@ -38,7 +38,10 @@ export default class BorderCrossingCameraComponent extends React.Component {
 				collapsed: !currentState.collapsed
 			};
 		});
+	}
 
+	getHeaderStyle() {
+		return this.state.collapsed ? styles.headerCollapsed : styles.headerDefault;
 	}
 
 	render() {
@@ -46,16 +49,18 @@ export default class BorderCrossingCameraComponent extends React.Component {
 		const buttonTitle = this.state.refreshing ? "Refreshing" : "Refresh";
 
 		return (
-			<Collapse isCollapsed={this.state.collapsed} onToggle={this.collapseToggled}>
+			<Collapse isCollapsed={this.state.collapsed} onToggle={this.collapseToggled} style={styles.collapse}>
 				<CollapseHeader>
 					<View>
-						<Text>{title}</Text>
+						<Text style={this.getHeaderStyle()}>{title}</Text>
 					</View>
 				</CollapseHeader>
 				<CollapseBody>
-					<View style={styles.container}>
+					<View style={styles.collapseBody}>
 						<Image style={styles.image} source={{ uri: this.state.imageUrl }} resizeMode="cover" onLoad={this.imageLoaded} />
-						<Button style={styles.button} title={buttonTitle} onPress={this.refresh} disabled={this.state.refreshing} />
+						<View style={styles.buttonView}>
+							<Button style={styles.button} title={buttonTitle.toUpperCase()} onPress={this.refresh} disabled={this.state.refreshing} color="black" />
+						</View>
 					</View>
 				</CollapseBody>
 			</Collapse>
@@ -64,20 +69,33 @@ export default class BorderCrossingCameraComponent extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	container: {
-		marginTop: 15,
-		flex: 1,
-		alignItems: 'stretch'
+	collapse: {
+		marginTop: 10,
+		borderWidth: 1,
+		borderRadius: 15,
+		overflow: "hidden"
 	},
-	title: {
-		textAlign: 'center',
-		fontSize: 20
+	headerDefault: {
+		padding: 5,
+		textAlign: "center",
+		fontSize: 20,
+		backgroundColor: "#edeaea"
+	},
+	headerCollapsed: {
+		padding: 5,
+		textAlign: "center",
+		fontSize: 20,
+		backgroundColor: "#878787"
+	},
+	collapseBody: {
+		flex: 1,
+		alignItems: "stretch",
 	},
 	image: {
 		flex: 1,
-		height: 200
+		height: 225
 	},
-	button: {
-		marginTop: 20
+	buttonView: {
+		backgroundColor: "#dbfdff"
 	}
 });

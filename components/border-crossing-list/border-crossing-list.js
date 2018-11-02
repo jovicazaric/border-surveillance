@@ -1,5 +1,6 @@
-import React from 'react';
-import BoarderCrossingCamera from '../border-crossing-camera/border-crossing-camera';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import BoarderCrossingCamera from "../border-crossing-camera/border-crossing-camera";
 
 export default class BorderCrossingListComponent extends React.Component {
 	render() {
@@ -8,9 +9,15 @@ export default class BorderCrossingListComponent extends React.Component {
 		});
 
 		return (
-			<React.Fragment>
+			<View style={styles.crossings}>
 				{crossings}
-			</React.Fragment>
+			</View>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	crossings: {
+		padding: 5
+	}
+});
